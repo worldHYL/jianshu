@@ -207,6 +207,7 @@
     @media(max-width:1440px){
         nav .nav-list li a i{
             display: none;
+
         }
     }
     @media(max-width:1080px){
