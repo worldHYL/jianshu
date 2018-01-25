@@ -208,7 +208,6 @@
         nav .nav-list li a i{
             display: none;
         }
-
     }
     @media(max-width:1080px){
         nav .nav-list li a i{
