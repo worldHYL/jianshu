@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                 </div>
-                <!--左边的导航条-->
+                <!--左边的小导航条-->
                 <div class="container">
                     <ul class="nav-list">
                         <li class="active">
@@ -188,7 +188,6 @@
     nav .nav-list li {
         float: left;
     }
-
     nav .nav-list li a {
         height: 56px;
         line-height: 56px;
@@ -207,7 +206,6 @@
     @media(max-width:1440px){
         nav .nav-list li a i{
             display: none;
-
         }
     }
     @media(max-width:1080px){
