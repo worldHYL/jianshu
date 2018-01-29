@@ -91,33 +91,28 @@
         height: 56px;
         width: 100%;
     }
-
     .navbar {
         padding: 0;
         border-bottom: 1px solid #e7e7e7;
         margin-bottom: 20px;
         background-color: #fff;
     }
-
     .nav-fixed-top {
         position: fixed;
         top: 0;
         left: 0;
         z-index: 65454;
     }
-
     nav .width-limit {
         width: 100%;
         min-width: 768px;
         margin: 0 auto;
     }
-
     nav .nav-logo {
         float: left;
         height: 56px;
         padding: 0;
     }
-
     nav .write-btn {
         float: right;
         width: 100px;
@@ -129,17 +124,14 @@
         border-radius: 20px;
         opacity: 0.8;
     }
-
     nav a.write-btn:hover {
         color: #ffffff !important;
         opacity: 1;
     }
-
     nav .user {
         float: right;
         position: relative;
     }
-
     nav .user .avater {
         width: 40px;
         height: 40px;
@@ -149,11 +141,9 @@
         border: 1px solid #ccc;
         border-radius: 50%;
     }
-
     nav .user:hover {
         background-color: #f5f5f5;
     }
-
     nav .user .avater::before {
         content: "";
         position: absolute;
@@ -163,14 +153,12 @@
         border-right: 5px solid transparent;
         border-top: 6px solid #999
     }
-
     nav .user .avater img {
         width: 100%;
         height: 100%;
         border: 1px solid #ccc;
         border-radius: 50%;
     }
-
     nav .user .drop-menu {
         width: 160px;
         position: absolute;
@@ -178,27 +166,22 @@
         box-shadow: 0 0 8px rgba(0, 0, 0, .1);
         font-size: 14px;
     }
-
     nav .user .drop-menu ul {
         border: 1px solid #ccc;
         margin: 0 !important;
     }
-
     nav .user .drop-menu ul li a {
         display: block;
         padding: 10px;
     }
-
     nav .user .drop-menu ul li i {
         margin: 0 15px 0 10px;
         color: #ea6f5a;
         font-size: 18px;
     }
-
     nav .user .drop-menu ul li a:hover {
         background-color: #f5f5f5;
     }
-
     nav .nav-list {
         height: 56px;
         float: left;
@@ -232,6 +215,9 @@
         color: #ea6f5a;
         background-color:#fff;
     }
+    nav .nav-list li.active a{
+        padding-left:0 ;
+    }
     nav .nav-list .notify{
         position:relative;
     }
@@ -240,6 +226,7 @@
         position: absolute;
         left: 0;
         box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+        background-color: white;
     }
     nav .nav-list .notify .drop-menu li a{
         font-size:14px !important;
@@ -332,7 +319,7 @@
         }
     }
     @media(max-width:1440px){
-        nav .nav-list>.active>a>i{
+        nav .my-container .nav-list>li>a>i{
             display: none;
         }
         nav .nav-list .search form input{
@@ -343,10 +330,10 @@
         }
     }
     @media(max-width:1080px){
-        nav .nav-list>.active>a>i{
+        nav .my-container .nav-list>li>a>i{
             display: block;
         }
-        nav .nav-list li a span{
+        nav .my-container .nav-list>li>a>span{
             display: none;
         }
         nav .nav-list .search form input{

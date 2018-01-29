@@ -1,4 +1,5 @@
 
+/***************************公共注释*****************************/
 *{
     box-sizing: border-box;
 }
@@ -37,4 +38,45 @@ ul,ol,dl {
 }
 img{
     max-width: 100%;
+}
+/***********************首页布局**********************************/
+.my-container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px
+}
+@media (max-width: 1080px){
+    .my-container {
+        width: 750px!important;
+    }
+}
+@media (min-width: 992px){
+    .my-container {
+        width: 960px!important;
+    }
+}
+.index{
+    padding-top:30px;
+}
+.index .main{
+    height:270px;
+    padding-right:0;
+}
+.index .main .banner{
+    margin-bottom:35px;
+}
+.index .aside{
+    height: 200px;
+    padding-left:4.1667%;
+}
+.index .aside .board{
+    margin-top:-4px;
+    padding-bottom: 4px;
+}
+.index .aside .board img{
+    width: 100%;
+    margin-bottom:9px;
+    border-radius:4px;
 }
