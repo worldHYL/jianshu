@@ -1,5 +1,14 @@
 
 /***************************公共注释*****************************/
+/*清除浮动*/
+.clearfix:after{
+    content:'';
+    clear:both;
+    height:0;
+    overflow: hidden;
+    visibility: hidden;
+    display: block;
+}
 *{
     box-sizing: border-box;
 }
@@ -51,8 +60,24 @@ img{
     .my-container {
         width: 750px!important;
     }
+    .note-list li.have-img>.wrap-img{
+        margin-top:-58px;
+        bottom: 40px;
+        width: 125px!important;
+        height: 100px!important;
+    }
+    .note-list li.have-img>div{
+        padding-right: 135px;
+    }
+    .aside .download{
+        padding: 7px 10px!important;
+    }
+    .aside .download img{
+        width: 50px!important;
+        height: 50px!important;
+    }
 }
-@media (min-width: 992px){
+@media (min-width: 1080px){
     .my-container {
         width: 960px!important;
     }
@@ -61,11 +86,42 @@ img{
     padding-top:30px;
 }
 .index .main{
-    height:270px;
     padding-right:0;
 }
 .index .main .banner{
     margin-bottom:35px;
+}
+/*推荐专题*/
+.index .main .recommend-collection{
+    margin-bottom:10px;
+}
+.index .main .recommend-collection a{
+    display: inline-block;
+    margin:0 18px 18px 0;
+    border-radius: 6px;
+    background-color: #f7f7f7;
+    border: 1px solid #cccccc;
+    min-height: 32px;
+    overflow: hidden;
+}
+.index .main .recommend-collection .more-hot{
+    border:none;
+    background-color: white;
+}
+.index .main .recommend-collection a img{
+    width: 32px;
+    height: 32px;
+    vertical-align: bottom;
+}
+.index .main .recommend-collection a span{
+    display: inline-block;
+    padding:  0px 10px;
+    line-height: 32px;
+    font-size: 14px;
+}
+.splite-line{
+    margin-bottom: 0 0 15px;
+    border-bottom:1px solid #f0f0f0;
 }
 .index .aside{
     height: 200px;
@@ -80,3 +136,470 @@ img{
     margin-bottom:9px;
     border-radius:4px;
 }
+.note-list{
+    margin:0;
+    padding: 0;
+    border:none;
+    list-style: none;
+}
+.note-list li{
+    width: 100%;
+    position:relative;
+    padding: 0 0 17px 0;
+    margin:0 0 17px 0;
+    border-bottom:1px solid #ccc;
+    word-wrap: break-word;
+}
+.note-list li.have-img>.wrap-img{
+    position:absolute;
+    top:50%;
+    right:0;
+    width: 150px;
+    height: 120px;
+    margin-top:-60px;
+}
+.note-list li.have-img>.wrap-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border:1px solid #f0f0f0;
+}
+.note-list li.have-img .content{
+    padding-right: 160px;
+}
+.note-list .author{
+    margin-bottom: 14px;
+    font-size:13px;
+}
+.note-list .author .avatar , .note-list .author .info{
+    display: inline-block;
+    vertical-align: middle;
+}
+.avatar{
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+.avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border:1px solid #ccc;
+}
+.note-list .author .avatar{
+    margin:0 5px 0 0;
+}
+.note-list .author .info .time{
+    color: #969696;
+    padding-left: 5px;
+}
+.note-list .title{
+    display: block;
+    font-size:18px;
+    font-weight: 700;
+    margin-bottom:7px;
+}
+.note-list .title:visited{
+    color:#969696!important;
+}
+.note-list .abstract{
+    font-size: 13px;
+    line-height: 24px;
+    margin:0 0 13px 0;
+}
+.note-list .meta{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+
+}
+.note-list .meta .collection-tag{
+    color:#ea6f5a !important;
+    border:1px solid #ea6f5a;
+    padding:1px 6px;
+    margin-right:20px;
+    max-width: 200px;
+    transition:all ease-in .5s;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    vertical-align: middle;
+}
+.note-list .meta .collection-tag:hover{
+    background-color: rgb(254,247,246);
+    border-color:rgb(236,97,73);
+}
+.note-list .meta a{
+    margin-right:10px;
+    color:#b4b4b4 !important;
+    transition: all ease-in .2s;
+}
+.note-list .meta a.tag:hover{
+    color:rgb(120,120,120)!important;
+}
+.note-list .meta span{
+    color:#b4b4b4;
+}
+footer.my-container{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+.index .main .load-more{
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color:#fff!important;
+    background-color: #a5a5a5;
+    border-radius: 40px;
+    margin:30px auto 60px;
+    font-size:15px;
+}
+.recommend-author{
+    margin-bottom:20px;
+    font-size:14px;
+    text-align: center;
+}
+.recommend-author .title{
+    text-align: left;
+    color:#969696;
+}
+.recommend-author .title .page-change{
+    float:right;
+    color:#969696;
+}
+.recommend-author .title .page-change i{
+    transition: ease .2s;
+}
+.recommend-author .list {
+    margin-bottom:20px;
+    text-align: left;
+}
+.recommend-author .list li{
+    margin-top:15px;
+}
+.recommend-author .list li .name{
+    display: block;
+    padding-top:5px;
+    font-size:14px;
+    margin-right:60px;
+}
+.recommend-author .list li .avator{
+    float:left;
+    width:48px;
+    height: 48px;
+    margin-right:10px;
+}
+.recommend-author .list li .follow{
+    margin-top:5px;
+    float:right;
+    font-size: 13px;
+    color: #42c02e!important;
+}
+.recommend-author .list li p {
+    color:#969696;
+    font-size:12px;
+}
+.recommend-author .find-more{
+    width: 100%;
+    padding: 7px 7px 7px 12px;
+    color:#787878;
+    border:1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size:13px;
+    border-radius:4px;
+}
+.aside .download{
+    width: 100%;
+    border:1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 10px 22px;
+    margin-bottom:30px;
+    min-height:70px;
+    display: block;
+}
+.aside .download img{
+    width: 60px;
+    height: 60px;
+    float:left;
+    margin-right:15px;
+}
+.aside .download div.title{
+    color:#333;
+    font-size:15px;
+    margin-top:5px;
+}
+.aside .download div{
+    color:#969696;
+    font-size:12px;
+    margin-top:4px;
+}
+/*----------------------------------------------文章页面布局--------------------------------------*/
+.note{
+    position: relative;
+    padding-top: 10px;
+}
+.note .post{
+    width:620px;
+    margin:0 auto;
+    padding-top:20px;
+    padding-bottom:40px;
+}
+.note .post .article .title{
+    font-size:34px;
+    font-weight:700;
+    margin:20px 0 0;
+    word-break: break-all;
+}
+.note .post .article .author{
+    margin:30px 0 40px 0;
+}
+.note .post .article .author .avatar{
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    border-radius: 50%;
+    border:1px solid #ccc;
+}
+.note .post .article .author .info{
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.note .post .article .author .info .name{
+    font-size: 16px;
+    margin-right:3px;
+}
+.note .post .article  .info .follow{
+    color:white!important;
+    background-color: #42c02e!important;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 0px 7px 0px 5px;
+}
+.note .post .article  .info .care{
+    border:1px solid #cccccc;
+    background-color: white!important;
+    color:#cccccc!important;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 0px 7px 0px 5px;
+}
+.note .post .article .author .meta{
+    margin-top:5px;
+    font-size: 12px;
+    color:#969696;
+}
+.note .post .article .author .meta span{
+    margin-right:8px;
+}
+.note .post .article .show-content{
+    font-size: 16px;
+    font-weight:400;
+    word-break: break-all;
+    color:#2f2f2f;
+    line-height: 1.7;
+}
+.note .post .article .show-content p{
+    margin:0 0 20px;
+}
+.note .post .article .show-foot{
+    margin-bottom:30px;
+}
+.note .post .article .show-foot .notebook{
+    font-size:12px;
+    color:#c8c8c8!important;
+}
+.note .post .article .show-foot .notebook i{
+    margin-right:5px;
+}
+.note .post .article .show-foot .copyright{
+    float:right;
+    font-size:12px;
+    color:#c8c8c8!important;
+}
+.note .post .article .show-foot .copyright i{
+    margin-right:5px;
+}
+.note .post .article .follow-detail{
+    padding: 20px;
+    background-color: #f8f8f8;
+    border:1px solid #e1e1e1;
+    border-radius:4px;
+}
+.note .post .article .follow-detail .avatar{
+    width: 48px;
+    height:48px;
+    float:left;
+    margin-right: 10px;
+}
+.note .post .article .follow-detail .following{
+    background-color: none;
+}
+.note .post .article .follow-detail .title{
+    font-size:17px;
+    line-height: 1.8;
+    margin-right:5px;
+}
+.note .post .article .follow-detail .info>i{
+    color:#3194d0;
+    font-size:15px;
+}
+.note .post .article .follow-detail .info p{
+    color:#969696;
+    font-size:12px;
+    margin-bottom:0;
+}
+.note .post .article .follow-detail .signature{
+    padding-top: 20px;
+    margin-top:20px;
+    border-top:1px solid #ddd;
+    color: #969696;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    font-size:12px;
+}
+.note .post .article .meta-bottom{
+    margin-top:40px;
+    margin-bottom:80px;
+}
+.note .post .article .meta-bottom .like{
+    display: inline-block;
+    border-radius: 40px;
+}
+.note .post .article .meta-bottom .share-group{
+    float:right;
+}
+.note .post .article .meta-bottom .like-group{
+    border:1px solid #ea6f5a;
+    padding: 13px 0 15px;
+    border-radius: 40px;
+}
+.note .post .article .meta-bottom .like-group2{
+    border:1px solid #ea6f5a;
+    padding: 13px 0 15px;
+    border-radius: 40px;
+    background-color: #ea6f5a;
+    color:white;
+}
+.note .post .article .meta-bottom .like .active{
+    background-color: #ea6f5a;
+}
+.note .post .article .meta-bottom .like:hover{
+    background-color: #fef7f6;
+}
+.note .post .article .meta-bottom .like-group .btn-like{
+    font-size: 19px;
+    display: inline-block;
+    color:#ea6f5a;
+}
+.note .post .article .meta-bottom .like-group2 .btn-like{
+    font-size: 19px;
+    display: inline-block;
+    color:#fff;
+}
+.note .post .article .meta-bottom .like-group .btn-like a {
+    padding: 18px 30px 18px 17px;
+}
+.note .post .article .meta-bottom .like-group2 .btn-like a {
+    padding: 18px 30px 18px 17px;
+}
+.note .post .article .meta-bottom .like-group .modal-wrap{
+    font-size:18px;
+    display: inline-block;
+    border-left:1px solid #ccc;
+}
+.note .post .article .meta-bottom .like-group2 .modal-wrap{
+    font-size:18px;
+    display: inline-block;
+    border-left:1px solid #ccc;
+}
+.note .post .article .meta-bottom .like-group .modal-wrap a{
+    padding: 18px 30px 18px 17px;
+    color:#ea6f5a !important;
+}
+.note .post .article .meta-bottom .like-group2 .modal-wrap a{
+    padding: 18px 30px 18px 17px;
+}
+.note .post .article .meta-bottom .share-group{
+    position: relative;
+}
+.note .post .article .meta-bottom .share-group>a{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border:1px solid #dcdcdc;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-left:5px;
+    display: inline-block;
+    line-height: 50px;
+}
+.note .post .article .meta-bottom .share-group a i{
+    font-size:25px;
+}
+.fa-weibo{
+    color:red!important;
+}
+.fa-weixin{
+    color:green!important;
+}
+.fa-qq{
+    color:blue!important;
+}
+.note .post .article .meta-bottom .share-group .more-share{
+    width: auto;
+    line-height:40px;
+    font-size:14px;
+    padding: 4px 18px;
+    border-radius: 40px;
+    color:#969696!important;
+}
+.note .post .article .meta-bottom .share-group .share{
+    position:absolute;
+    background-color: white;
+    border:1px solid #ccc;
+    width: 150px;
+    top:-161px;
+    left:145px;
+    text-align:left!important;
+    vertical-align: middle;
+    box-shadow: 5px 5px 5px #ccc;
+    border-radius: 5px;
+}
+.note .post .article .meta-bottom .share-group  .share li{
+    height: 30px;
+    line-height: 30px;
+}
+.note .post .article .meta-bottom .share-group  .share li:hover{
+    background-color:#eee;
+}
+.note .post .article .meta-bottom .share-group  .share i{
+    font-size:15px;
+    float:left;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin:7px 10px 5px 5px;
+}
+.note .post .article .meta-bottom .share-group  .triangle{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-top: 10px solid white;
+    border-left:10px solid rgba(0,0,0,0);
+    border-right:10px solid rgba(0,0,0,0);
+    border-bbottom:10px solid rgba(0,0,0,0);
+    top:-10px;
+    left:205px;
+}
+.note .post .article .meta-bottom .share-group a:hover{
+    background-color: rgb(248,248,248);
+}
+
+
