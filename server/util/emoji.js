@@ -3,7 +3,6 @@ let emojiData = {}
 Object.values(data).forEach(item => {
   emojiData = { ...emojiData, ...item }
 })
-
 /**
  *
  *
@@ -11,7 +10,6 @@ Object.values(data).forEach(item => {
  * @param {string} value
  * @returns {string}
  */
-
 export function emoji (value) {
   if (!value) return
   Object.keys(emojiData).forEach(item => {
@@ -19,7 +17,6 @@ export function emoji (value) {
   })
   return value
 }
-
 function createIcon (item) {
   const value = emojiData[item]
   const path = './static/emoji/'
