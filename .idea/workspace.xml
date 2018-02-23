@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/nuxt.config.js" line="15" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d1370e9-286e-4575-9251-d0921d17e0ae" name="Default" comment="123123">
+    <list default="true" id="1d1370e9-286e-4575-9251-d0921d17e0ae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -236,7 +236,7 @@
       <workItem from="1518954909450" duration="6837000" />
       <workItem from="1519390492940" duration="1926000" />
       <workItem from="1519399086504" duration="708000" />
-      <workItem from="1519399843150" duration="4000" />
+      <workItem from="1519399843150" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册页面">
       <created>1516782960313</created>
@@ -350,11 +350,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519399271382</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="homework">
+      <created>1519399861908</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1519399861908</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289437000" />
+    <option name="totallyTimeSpent" value="289460000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
