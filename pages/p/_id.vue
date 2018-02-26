@@ -1,211 +1,212 @@
 <template>
-    <div @click="close">
-        <my-header></my-header>
-        <div  class="note">
-            <!--文章区域-->
-            <div class="post">
-                <!--正文-->
-                <div class="article">
-                    <h1>月薪三千就该去死吗?</h1>
-                    <div class="author">
+  <div>
+      <my-header></my-header>
+       <div class="note">
+           <!--文章区域-->
+           <div class="post">
+               <!--正文-->
+               <div class="article">
+                   <h1 class="title">大年初一</h1>
+                   <div class="author">
                         <nuxt-link class="avatar" to="/u/123">
-                            <img src="../../assets/img/auther-img.jpg" alt="">
+                        <img src="../../assets/img/user.jpg" alt="">
                         </nuxt-link>
                         <div class="info">
                             <span class="name">测试用户</span>
-                            <a class="follow" ref="care1" @mouseover="over" @mouseout="out" @click="care"
-                               href="javascript:void(0)">
-                                +关注
+                            <a href="javascript:void(0)" class="btn-sm" :class="followObj" @click="bjclick" @mouseover="bjover"  @mouseout="bjout" ref="gz">
+                                <i class="fa" :class="iconObj" ref="icon"></i>
+                                 <span ref="guanzhu">关注</span>
                             </a>
-                            <div class="meta">
-                                <span title="2018.01.30 14:40">2018.01.30 14:40</span>
-                                <span>字数 2273</span>
-                                <span>阅读 882</span>
-                                <span>评论 7</span>
-                                <span>喜欢 34</span>
-                            </div>
+                        <div class="meta">
+                            <span>2018.01.23 16:09</span>
+                            <span>字数 3273</span>
+                            <span>阅读 5550</span>
+                            <span>评论 55</span>
+                            <span>喜欢 34</span>
                         </div>
+                        </div>
+                       
                     </div>
-                    <div class="show-content">
-                        <p>
-                            没办法，中国女性地位早已不是“重男轻女”的时代，代表着女权主义的评论清一色地给出“不能嫁”的结论，并嘲讽地说：“老娘自己都能赚到这个数，还要你这老爷们何用？”此等答案有几千人点赞，于是“代表底层大众”的“月薪三千的男人”被拉出来各种声讨。</p>
-                        <p>先别忙着歧视，也别忙着诉苦，我们先来讲两个类似的故事。</p>
-                        <hr>
-                        <p>1.</p>
-                        <p>我一高中同学，是河北某三线城市的，在工厂当技术员。当地人均工资不到两千，而他月薪三千的收入，足够他生活所需。</p>
-                        <p>
-                            并且他这个人也足够“佛系”，很早地就把生活定位在“快乐就好”的基调上。前年他结婚时，我去参加了婚礼，现场别的花样没有，就只见到他和他老婆两个人在整场典礼上都发出傻笑的画面。这还不算，双方的父母也都是“两排牙齿一起亮”的节奏，整个一“中国好笑容”。我和一起同来的高中老班长面面相觑，很久之后他自言自语道：“他们脑袋是不是都瓦特了？”</p>
-                        <p>不过让我感动的是，同学老婆虽然是大学毕业思想独立的知识女性，但依旧保持着爱情的初心，两家没有彩礼往来，女方给予了我同学心里满满的依赖和眼里满满的爱意。</p>
-                        <p>同学告诉我，两人达成一致，生活以满足基本要求就好，在能力范围内享受奢侈。女方月工资两千五，两人在双方家里的帮助下买了一个小房，装修得相对小资，在那个城市里活得很滋润。</p>
-                        <p>
-                            我们的班长还是对他没选择一线城市奋斗表示惋惜，甚至为他儿女将来面临的竞争问题表示担心。但是他不奢望他的孩子一定要考上多么重点的学校，获得多么成功的人生；而且他觉得他的生活里孩子只是一小部分，他和他老婆还有自己的人生追求。</p>
-                        <p>后来我们参加完婚礼就赶紧走了，两人实在是甜得发齁，让我们鸡皮疙瘩三尺高，难受。</p>
-                        <p>
-                            去年他们有了孩子，生活并没有像我们班长当时说的“有了孩子你们就有矛盾”那般残酷。这几年来，我十分想屏蔽他天天晒老婆的“尬笑”朋友圈，但是我的仁慈打败了我的理智。今天我问他关于“月薪三千的男人”这个话题时，他第一句回复是赤裸裸的撒狗粮：“不是每个男人都能碰见我老婆这么好的女孩子。”第二句则是恶狠狠地为自己正名：“老子工资是三千零五十块七毛八，不是你们那个档次的！”</p>
-                        <hr>
-                        <p>2.</p>
-                        <p>我大学的一个好哥们，毕业后考了公务员，抱上了铁饭碗，我们很是羡慕他——当然不是羡慕他的工作，而是他的女朋友，那叫一个漂亮，那叫一个带劲。</p>
-                        <p>
-                            但是在他当上公务员的第二年，他们就分手了，原因很直接：他一个月的工资，都够不上女朋友那一套lamer面霜。彼时他拿到手的钱和各种单位福利正好在三千多一点，符合我们这篇稿子探讨的要求。</p>
-                        <p>我哥们沉寂了一阵，但对工作兢兢业业，从不马虎。没想到他得到了一个表现的机会，他的文笔和口才被领导相中，调到了更高级别，工资涨了一千，然后今年，已经达到了五千的水平。</p>
-                        <p>
-                            这工资貌似也不高，但是通过努力获得的人生认同感明显是幸福的一种具体体现——还有什么比个人进步更值得骄傲的事情呢？这哥们寄情于工作，年年被评为优秀工作分子，相中他的女孩没有十个也有八个了，结果却十分狗血，他那个美丽的女友回来了，表示她很后悔，希望他再给她一次机会。</p>
-                        <p>
-                            要说人家怎么是优秀分子呢？内心非常宽容，不计前嫌。他不像我们想的那种“分开就分开，再见已是沧海。”两人复合后，生活得很不错，我时常在朋友圈里看见他一展歌喉，要“带你去看浪漫的土耳其，然后一起去东京和巴黎”。紧接着他女友就回复道：“谢谢亲爱的，么么哒~”</p>
-                        <p>
-                            可能他有一种对初恋的执念吧，或者他用他超强的能力改变了女友的价值观，或者他女友看见了他无限的发展潜力……不过关于他的伟大宣言，暂时只能想想，毕竟土耳其加东京加巴黎这趟旅程，好像没有十二万下不来，一个月五千，得攒上个三年。</p>
-                        <p>
-                            嗯，嫉妒使我丑陋，丑陋让我吐槽，毕竟老子少年时代就环绕地球仪好几圈了，对他们这种还没环游过世界的人不屑一顾。结果那天他女朋友更凶狠地发了一条朋友圈：“我家那位绕着我转了一圈，我问他在做什么。他深情地说刚刚环游了世界，因为我就是他的世界，嘻嘻嘻~”</p>
-                        <p>怒删两位，计划过年时再加回，所以这篇稿子，他们看不到，除非你们又给我疯狂地转一波，那我死得也其所。</p>
-                        <hr>
-                        <p>3.</p>
-                        <p>所以啊，</p>
-                        <p>脱离开地域来谈工资三千是不对的；</p>
-                        <p>脱离开发展来谈工资三千是不对的；</p>
-                        <p>脱离开个人喜好来谈钱更是不对的；</p>
-                        <p>但脱离开低级趣味是对的。</p>
-                        <p>
-                            “金钱买不来健康，金钱买不来快乐”，这的确是一个谬论；但同样地，“有些人天生就输在起跑线上”也是一句毒汤。这个社会，存在着各种各样niubility的人物，你去欣赏学习就好，别攀比，别仇富。谁都在灿烂的时光里幻想过自己的未来会像小说主角一样开挂，成就一番大事业，但生活给我们更多的是平凡。能在平淡日子里寻找到理想，寻找到快乐，让这平凡的日子有花开放，才是生命永恒的主题。</p>
-                        <p>别放弃，不死终有希望；</p>
-                        <p>慢慢来，一切来得及。</p>
-                    </div>
-                    <!--正文下面的底部-->
-                    <div class="show-foot">
-                        <nuxt-link to="/nb/123" class="notebook">
-                            <i class="fa fa-book"></i>
-                            <span>我的文集</span>
-                        </nuxt-link>
-                        <div class="copyright">
-                           <i class="fa fa-copyright"></i> <span>著作权归作者所有</span>
-                        </div>
-                    </div>
-                    <div class="follow-detail">
-                        <div class="info">
-                            <nuxt-link class="avatar" to="/u/123">
-                                <img src="../../assets/img/default-avatar.jpg" alt="">
-                            </nuxt-link>
-                            <a style="float:right; margin-right: 10px;" class="follow" href="javascript:void(0)" ref="care2" @mouseover="over" @mouseout="out" @click="care">
-                                +关注
-                            </a>
-                            <nuxt-link class="title" to="/u/123">测试用户</nuxt-link>
-                            <i class="fa fa-mars"></i>
-                            <p>写了1321515字,被1321人关注,获得了4654654156个喜欢</p>
-                        </div>
-                        <div class="signature">
-                            为城市里的不安和孤寂发声,微信公众号得及
-                        </div>
-                    </div>
-                    <div class="meta-bottom">
-                        <div class="like">
-                            <div class="like-group" ref="o" @click='isLike'>
-                                <div class="btn-like">
-                                   <a href="javascript:void(0)">
-                                       <i class='fa fa-heart'></i>
-                                       <span>喜欢</span>
-                                   </a>
-                               </div>
-                                <div class="modal-wrap">
-                                    <a>{{like_number}}</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="share-group">
-                            <a href="javascript:void(0)" v-b-tooltip.hover title="分享到微博">
-                                <i class="fa fa-weibo"></i>
-                            </a>
-                            <a href="javascript:void(0)" v-b-tooltip.hover title="分享到微信">
-                                <i class="fa fa-weixin"></i>
-                            </a>
-                            <a href="javascript:void(0)" v-b-tooltip.hover title="分享到QQ">
-                                <i class="fa fa-qq"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="more-share" @click="changeColor">
-                                更多分享
-                            </a>
-                            <ul class="share" v-show="list">
-                                <li><i class="fa fa-qq"></i><span>分享到QQ空间</span></li>
-                                <li><i class="fa fa-twitter"></i><span>分享到Twitter</span></li>
-                                <li><i class="fa fa-facebook"></i><span>分享到Facebook</span></li>
-                                <li><i class="fa fa-google"></i><span>分享到Goodle+</span></li>
-                                <li><i class="fa">豆</i><span>分享到豆瓣</span></li>
-                            </ul>
-                            <div class="triangle"></div>
-                        </div>
-                    </div>
+                    <!--文章内容-->
+                   <div data-note-content="" class="show-content">
+                    <p>大年初一的早晨，定了六点的闹钟。当它准时奏起起床的音乐时，我还是在心里挣扎了很久才睁开眼睛。昨晚睡得太晚了。</p>
+                    <p>佑翻了个身，拥我入怀。“新年好，老婆！”他笑着吻了一下我的额头。</p>
+                    <p>“新年好，老公！新的一年终于来了！”我更深地扎进他的怀里，充分地感受着这温暖的怀抱。</p>
+                    <p>“你们的婚姻真是童话婚姻。”我又想起了你说的这句话。是的，今年是我们结婚整整二十年，我用我的感性维持着我们婚姻的鲜度，我不喜欢那种麻木到两个人只有柴米油盐的生活。</p>
+                    <p>怎么又想起了你，在大洋彼岸的你还好吗？七年了，你不想念我们，不想念你的祖国吗？</p>
+                    <p>“过年好，希望你一切都好！”我叹了一口气，在心里默默地祝福了你。</p>
+
+                   </div>
+               </div>
+               <div class="show-foot">
+                   <nuxt-link to="/nb/123" class="notebook">
+                   <i class="fa fa-book"></i>
+                   <span>我的文集</span>
+                   </nuxt-link>
+                   <div class="copyright">
+                       © 著作权归作者所有
+                   </div>
+               </div>
+               <div class="follow-detail">
+                <div class="info">
+                  <nuxt-link class="avatar" to="/u/123">
+                  <img src="../../assets/img/user.jpg" alt="">
+                   </nuxt-link>          
+                   <a class="btn btn-success followb" href="javascript:void(0)" :class="followObj" @click="bjclick" @mouseover="bjover"  @mouseout="bjout" ref="gz">
+                       <i class="fa" :class="iconObj" ref="icon2"></i>
+                       <span ref="guanzhu2">关注</span></a>
+                   <nuxt-link class="title" to="/u/123">散漫</nuxt-link>
+                   <i class="fa fa-mars ic-man"></i>
+                   <p>写了 13138 字，被 27 人关注，获得了 29 个喜欢</p>
                 </div>
-                <!--回复组件-->
-                <my-comment></my-comment>
-            </div>
-            <!--悬浮的操作框-->
-            <div class="side-bar"></div>
-            <!--对应的推荐阅读-->
-            <div class="note-bottom"></div>
-        </div>
-    </div>
+                <div class="signature">知我者，谓我心忧。不知我者，谓我何求。。。</div>
+                </div>
+               <div class="meta-bottom clearfix">
+                 <div class="like"> 
+                    <div class="btn" :class="likeObj" @click="likeOk"> 
+                        <div class="btn-like">
+                            <a class="fontLike"><i class="fa fa-heart-o"></i>
+                            喜欢
+                            </a>
+                        </div>
+                        <div class="modal-wrap">
+                            <a class="fontNum">{{number}}</a>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="share-group">
+                        <b-tooltip  target = "Button1" title = "分享到微信"></b-tooltip >
+                        <b-tooltip  target = "Button2" title = "分享到微博"></b-tooltip >
+                        <b-tooltip  target = "Button3" title = "分享到QQ"></b-tooltip >
+                     <a href="javascript:void(0)" id = "Button1"  variant = "outline-success">
+                         <i class="fa fa-weixin weixin"></i>
+                       </a>
+                          <a href="javascript:void(0)" id = "Button2"  variant = "outline-success">
+                         <i class="fa fa-weibo weibo"></i>
+                     </a>
+                          <a href="javascript:void(0)" id = "Button3"  variant = "outline-success">
+                         <i class="fa fa-qq qq"></i>
+                     </a>
+                     <div class="btn more-share" @click.stop="moreBtn" id="ms" ref="mode">
+                         更多分享
+                     </div>
+                     <div class="motai" v-show="mk">
+                          <div class="content">
+                          <ul>
+                              <li><i class="fa fa-star"></i><span>分享到QQ空间</span></li>
+                              <li><i class="fa fa-twitter"></i><span>分享到Twitter</span></li>
+                              <li><i class="fa fa-facebook-official"></i><span>分享到FaceBook</span></li>
+                              <li><i class="fa fa-google-plus"></i><span>分享到Google+</span></li>
+                              <li><i class="fa fa-bug"></i><span>分享到豆瓣</span></li>
+                         </ul>
+                          </div>
+                         <div class="san"></div>
+                     </div>
+                 </div>
+               </div>
+              <!--留言-->
+              <myComment></myComment>
+           </div>
+
+           <!--悬浮的操作框-->
+           <div class="side-bar"></div>
+           <!--对应的推荐阅读-->
+           <div class="note-bottom"></div>
+       </div>
+  </div>
 </template>
 <script>
-    import myHeader from '../../components/myHeader'
-    import myComment from '../../components/myComment'
-    export default {
-        data() {
-            return {
-                list:false,
-                like_number:30,
-            }
-        },
-        methods: {
-            care: function () {
-                if (this.$refs.care1.className == 'follow') {
-                    this.$refs.care1.className = 'care';
-                    this.$refs.care1.innerHTML = '√已关注';
-                    this.$refs.care2.className = 'care';
-                    this.$refs.care2.innerHTML = '√已关注';
-                } else {
-                    this.$refs.care1.className = 'follow';
-                    this.$refs.care1.innerHTML = ' +关注';
-                    this.$refs.care2.className = 'follow';
-                    this.$refs.care2.innerHTML = ' +关注';
-                }
-            },
-            over: function () {
-                if (this.$refs.care1.className == 'care') {
-                    this.$refs.care1.innerHTML = '×取消关注';
-                    this.$refs.care2.innerHTML = '×取消关注';
-                } else {
-                    this.$refs.care1.innerHTML = ' +关注';
-                    this.$refs.care2.innerHTML = ' +关注';
-                }
-            },
-            out: function () {
-                if (this.$refs.care1.className == 'care') {
-                    this.$refs.care1.innerHTML = '√已关注';
-                    this.$refs.care2.innerHTML = '√已关注';
-                } else {
-                    this.$refs.care1.innerHTML = this.$refs.care1.innerHTML;
-                    this.$refs.care2.innerHTML = this.$refs.care2.innerHTML;
-                }
-            },
-            isLike:function () {
-                if(this.$refs.o.className=="like-group"){
-                    this.$refs.o.className = "like-group2"
-                    this.like_number = this.like_number + 1;
-                }else{
-                    this.$refs.o.className = "like-group";
-                    this.like_number = this.like_number - 1;
-                }
-            },
-            changeColor:function () {
-                this.list = true;
-                console.log(this.list)
-                event.stopPropagation();
-            },
-            close:function () {
-                this.list = false;
-            }
-        },
-        components: {
-            myHeader,
-            myComment
-        }
+import myHeader from "~/components/MyHeader";
+import myComment from "~/components/MyComment";
+import $ from 'jquery';
+export default {
+  data() {
+    return {
+      number: 26,
+      mk:false,
+      followObj: {
+        follow: true,
+        followed: false
+      },
+      iconObj: {
+        "fa-plus": true,
+        "fa-check": false
+      },
+      likeObj: {
+        "like-group": true,
+        likeActive: false
+      },
+
+    };
+  },
+  methods: {
+    bjclick() {
+      this.followObj.follow = !this.followObj.follow;
+      this.followObj.followed = !this.followObj.followed;
+      this.iconObj["fa-plus"] = !this.iconObj["fa-plus"];
+      this.iconObj["fa-check"] = !this.iconObj["fa-check"];
+      let word = this.$refs.guanzhu.innerHTML;
+      this.$refs.guanzhu.innerHTML = word == "关注" ? "已关注" : "关注";
+      this.$refs.guanzhu2.innerHTML = word == "关注" ? "已关注" : "关注";
+    },
+    bjover() {
+      let word = this.$refs.guanzhu.innerHTML;
+      if (word == "已关注") {
+        this.$refs.icon.className = "fa fa-times";
+        this.$refs.icon2.className = "fa fa-times";
+        this.$refs.guanzhu.innerHTML = "取消关注";
+        this.$refs.guanzhu2.innerHTML = "取消关注";
+        this.$refs.gz.style.background = "#f8f8f8";
+      }
+    },
+    bjout() {
+      let word = this.$refs.guanzhu.innerHTML;
+      if (word == "取消关注") {
+        this.$refs.icon.className = "fa fa-check";
+        this.$refs.icon2.className = "fa fa-check";
+        this.$refs.gz.style.background = "";
+        this.$refs.guanzhu.innerHTML = "已关注";
+        this.$refs.guanzhu2.innerHTML = "已关注";
+      }
+    },
+    likeOk() {
+      if(this.likeObj["likeActive"]==true){
+          //不喜欢
+        --this.number;
+      }else{
+         //喜欢
+        ++this.number;
+      }
+      this.likeObj["like-group"] = !this.likeObj["like-group"];
+      this.likeObj["likeActive"] = !this.likeObj["likeActive"];
+    },
+    //阻止事件传播
+    moreBtn(ev){
+        this.mk=true;
+    },
+    //使用refs和target判断id值
+    // handleBodyClick(ev){
+    //     let con=this.$refs.mode.id;
+    //      let add=ev.target.id;
+    //      if(con!=add){
+    //        this.mk=false;
+    //      }
+    // },
+
+    handleBodyClick(ev){
+      this.mk=false;
     }
+  },
+mounted () {
+  document.addEventListener('click', this.handleBodyClick);
+},
+  components: {
+    myHeader,
+    myComment
+  }
+};
 </script>
+
+<style scoped>
+
+</style>
