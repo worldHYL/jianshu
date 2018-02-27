@@ -8,7 +8,7 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);  
-Vue.filter('formateDate',function(value){
+Vue.filter('formatDate',function(value){
       let now = new Date(value);
       let year = now.getFullYear();
       let month = (now.getMonth() + 1).toString().padStart(2, 0);

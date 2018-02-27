@@ -1,0 +1,22 @@
+.row{
+    padding-top:30px;
+}
+.menu{
+    margin-bottom:20px;
+    font-size:14px;
+    font-weight: 700;
+}
+.menu2{
+    margin-top:20px;
+    font-size:14px;
+    font-weight: 700;
+}
+.find-nothing{
+    display: block;
+    margin-top:25px;
+    text-align: center;
+}
+.find-nothing>img{
+    width: 100px;
+    vertical-align: middle;
+}

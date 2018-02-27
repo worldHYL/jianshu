@@ -78,7 +78,7 @@
                                 <div class="meta">
                                     <span>
                                         {{comment.floor}}楼·
-                                        {{comment.create_at |formateDate}}
+                                        {{comment.create_at |formatDate}}
                                     </span>
                                 </div>
                             </div>
@@ -94,16 +94,15 @@
                                         {{comment.likes_count}}人点赞
                                     </span>
                                 </a>
-                                <a href="javascript:void(0)" @click="showSubCommentForm(index)">
+                                <a href="javascript:void(0)" @click="showSubCommentForm(index,'top')">
                                     <i class="fa fa-comment-o"></i>
-                                    <span>回复我</span>
+                                    <span>回复</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="sub-comment-list">
-                      <div  v-show="comment.children.length != 0">
-                        <div v-for="(subComment,nindex) in comment.children" :id="'comment-' + subComment.id" class="sub-comment" :keys="nindex">
+                        <div v-show="comment.children.length != 0" v-for="(subComment,nindex) in comment.children" :id="'comment-' + subComment.id" class="sub-comment" :keys="nindex">
                             <p>
                                 <nuxt-link to="/u/123">
                                     {{subComment.user.nick_name}}
@@ -112,24 +111,23 @@
                                 <span v-html="subComment.compiled_content"></span>
                             </p>
                             <div class="sub-tool-group">
-                                <span>{{subComment.create_at|formateDate}}</span>
-                                <a href="javascript:void(0)" @click="showSubCommentAtName(nindex,index,subComment.user.nick_name)">
+                                <span>{{subComment.create_at|formatDate}}</span>
+                                <a href="javascript:void(0)" @click="">
                                     <i class="fa fa-comment-o"></i>
                                     <span>回复</span>
                                 </a>
                             </div>
                         </div>
-                        <div class="sub-comment more-comment">
-                            <a class="add-comment-btn" @click="showSubCommentForm(index)" href="javascript:void(0)">
+                        <div v-show="comment.children.length != 0" class="sub-comment more-comment">
+                            <a class="add-comment-btn" @click="showSubCommentForm(index,'bottom')" href="javascript:void(0)">
                                 <i class="fa fa-pencil"></i>
                                 <span>添加新评论</span>
                             </a>
                         </div>
-                      </div>
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                                <textarea v-focus placeholder="写下你的评论" ref="content" v-model="subCommentList[index]"></textarea>
+                                <textarea v-focus placeholder="写下你的评论"  ref="content" v-model="subCommentList[index]"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -233,7 +231,6 @@
                             is_author:false,
                             nick_name:'七岁就很拽',
                             badge:null,
-
                         },
                         compiled_content:'作为一名混凝土方块移动工程师，我一直以3000的月薪骄傲，甚至一度迷失自我。。。看了楼主这篇文章，我找回了初心',
                         children_count:3,
@@ -296,9 +293,7 @@
                 activeIndex:[],
                 emojiIndex:[],
                 subCommentList:[],
-                oldIndex:'',
-                oldIndexs:[],
-
+                commentFormState:[],
             }
         },
         methods:{
@@ -309,42 +304,28 @@
             sendComment:function(){
                 console.log('发送');
             },
-            showSubCommentForm:function(value){
-                if(this.activeIndex.includes(value)){
-                    let index = this.activeIndex.indexOf(value);
-                    this.activeIndex.splice(index,1);
-                }else{
-                    //清除掉表单内的内容
-                    this.subCommentList[value] = '';
-                    //将这个表情关掉
-                    this.emojiIndex = [];
-                    this.activeIndex.push(value);
+            showSubCommentForm:function(index,position){
+                if(!this.activeIndex.includes(index)){
+                    //第一次点击，总是显示
+                    this.activeIndex.push(index);
+                    //记录当前点击的下标以及位置
+                    this.commentFormState[index] = position;
+                }else if(this.activeIndex.includes(index)){
+                    if(this.commentFormState[index] !== position){
+                        //点的是另外一个
+                        this.commentFormState[index] = position;
+                    }else{
+                        //点的是同一个,将它隐藏掉.
+                        this.activeIndex.splice(this.activeIndex.indexOf(index),1)
+                        this.commentFormState[index] = '';
+                    }
                 }
             },
-            showSubCommentAtName:function(nvalue,value,name){
-                if(!this.oldIndexs.includes(this.oldIndex)){
-                    //   第一次点击
-                    this.activeIndex.push(value);
-                    this.subCommentList[value] = '';
-                    this.emojiIndex = [];
-                    this.subCommentList[value] += `@${name}`;
-                    this.oldIndex ="" + value + nvalue;
-                    this.oldIndexs.push(this.oldIndex);
-                    console.log(this.oldIndexs);
-                    console.log(this.oldIndex);
-                }else{
-                    let index = this.activeIndex.indexOf(value);
-                    this.activeIndex.splice(index,1);
-                    this.oldIndex = '';
-                    this.oldIndexs = [];
-                    //    第二次点击
-                    console.log("4564564")
-                }
-            },
+
             sendSubCommentData:function(value){
                 let index = this.activeIndex.indexOf(value);
                 this.activeIndex.splice(index,1);
-            //    value是下标
+                //value是下标
                 console.log(this.subCommentList[value]);
             },
             closeSubComment:function(value){
@@ -370,7 +351,7 @@
                 //关掉emoji弹出框
                 this.emojiIndex = [];
                 //聚焦一下
-                let num= this.activeIndex.indexOf(index);
+                let num = this.activeIndex.indexOf(index);
                 this.$refs.content[num].focus();
             }
         },
@@ -420,6 +401,7 @@
         position:relative;
         margin-left:48px;
         margin-bottom:20px;
+        padding:5px 0;
     }
     .note .post .comment-list .avatar {
         width:38px;
@@ -578,7 +560,7 @@
     .note .post .comment-list .sub-comment-list {
         border-left:2px solid #d9d9d9;
         margin-top:20px;
-        padding:5px 0 5px 20px;
+        padding:0 0 0 20px;
     }
     .note .post .comment-list .sub-comment {
         padding-bottom:15px;
