@@ -6,7 +6,7 @@
                 <nuxt-link class="avatar" to="/u/213">
                     <img src="../assets/img/default-avatar.jpg">
                 </nuxt-link>
-                <textarea @focus="sendCommentBtn=true" placeholder="写下你的评论" v-model="subCommentList[index]"></textarea>
+                <textarea @focus="sendCommentBtn=true" placeholder="写下你的评论" v-model="commentData"></textarea>
                 <transition :duration="200" name="fade">
                     <div v-if="sendCommentBtn" class="write-function-block clearfix">
                         <div class="emoji-modal-wrap">
@@ -65,7 +65,7 @@
                         <div class="zan"></div>
                     </div>
                 </div>
-                <div :id="'comment-'+comment.id" v-for="(comment,index) in comments" class="comment">
+                <div :id="'comment-'+comment.id" :keys="index" v-for="(comment,index) in comments" class="comment">
                     <div class="comment-content">
                         <div class="author">
                             <nuxt-link class="avatar" to="/u/123">
@@ -94,15 +94,16 @@
                                         {{comment.likes_count}}人点赞
                                     </span>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="javascript:void(0)" @click="showSubCommentForm(index)">
                                     <i class="fa fa-comment-o"></i>
-                                    <span>回复</span>
+                                    <span>回复我</span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div v-if="comment.children.length != 0" class="sub-comment-list">
-                        <div v-for="(subComment,index) in comment.children" :id="'comment-' + subComment.id" class="sub-comment">
+                    <div class="sub-comment-list">
+                      <div  v-show="comment.children.length != 0">
+                        <div v-for="(subComment,nindex) in comment.children" :id="'comment-' + subComment.id" class="sub-comment" :keys="nindex">
                             <p>
                                 <nuxt-link to="/u/123">
                                     {{subComment.user.nick_name}}
@@ -112,7 +113,7 @@
                             </p>
                             <div class="sub-tool-group">
                                 <span>{{subComment.create_at|formateDate}}</span>
-                                <a href="javascript:void(0)">
+                                <a href="javascript:void(0)" @click="showSubCommentAtName(nindex,index,subComment.user.nick_name)">
                                     <i class="fa fa-comment-o"></i>
                                     <span>回复</span>
                                 </a>
@@ -124,10 +125,11 @@
                                 <span>添加新评论</span>
                             </a>
                         </div>
+                      </div>
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                                <textarea v-focus placeholder="写下你的评论"></textarea>
+                                <textarea v-focus placeholder="写下你的评论" ref="content" v-model="subCommentList[index]"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -163,12 +165,9 @@
         name:'myComment',
         data () {
             return {
-                send:false,
                 sendCommentBtn:false,
                 showEmoji:false,
-                value:'',
                 commentData:'',
-                showAuthor:false,
                 comments:[
                     {
                         id:19935725,
@@ -234,6 +233,7 @@
                             is_author:false,
                             nick_name:'七岁就很拽',
                             badge:null,
+
                         },
                         compiled_content:'作为一名混凝土方块移动工程师，我一直以3000的月薪骄傲，甚至一度迷失自我。。。看了楼主这篇文章，我找回了初心',
                         children_count:3,
@@ -296,6 +296,9 @@
                 activeIndex:[],
                 emojiIndex:[],
                 subCommentList:[],
+                oldIndex:'',
+                oldIndexs:[],
+
             }
         },
         methods:{
@@ -310,18 +313,39 @@
                 if(this.activeIndex.includes(value)){
                     let index = this.activeIndex.indexOf(value);
                     this.activeIndex.splice(index,1);
-
                 }else{
                     //清除掉表单内的内容
                     this.subCommentList[value] = '';
-                    this.activeIndex.push(value);
-                    //关掉emoji表情
+                    //将这个表情关掉
                     this.emojiIndex = [];
+                    this.activeIndex.push(value);
+                }
+            },
+            showSubCommentAtName:function(nvalue,value,name){
+                if(!this.oldIndexs.includes(this.oldIndex)){
+                    //   第一次点击
+                    this.activeIndex.push(value);
+                    this.subCommentList[value] = '';
+                    this.emojiIndex = [];
+                    this.subCommentList[value] += `@${name}`;
+                    this.oldIndex ="" + value + nvalue;
+                    this.oldIndexs.push(this.oldIndex);
+                    console.log(this.oldIndexs);
+                    console.log(this.oldIndex);
+                }else{
+                    let index = this.activeIndex.indexOf(value);
+                    this.activeIndex.splice(index,1);
+                    this.oldIndex = '';
+                    this.oldIndexs = [];
+                    //    第二次点击
+                    console.log("4564564")
                 }
             },
             sendSubCommentData:function(value){
                 let index = this.activeIndex.indexOf(value);
                 this.activeIndex.splice(index,1);
+            //    value是下标
+                console.log(this.subCommentList[value]);
             },
             closeSubComment:function(value){
                 let index = this.activeIndex.indexOf(value);
@@ -336,16 +360,22 @@
                 }
             },
             selectSubEmoji:function(code){
+                //当前下标
                 let index = this.emojiIndex[0];
-                //将表情所代表的code值放入表单中;
+                //将表情所代表的code值放入表单当中.
                 if(this.subCommentList[index] == null){
                     this.subCommentList[index] = '';
                 }
                 this.subCommentList[index] += code;
-            },
+                //关掉emoji弹出框
+                this.emojiIndex = [];
+                //聚焦一下
+                let num= this.activeIndex.indexOf(index);
+                this.$refs.content[num].focus();
+            }
         },
         components:{
-            vueEmoji
+            vueEmoji,
         },
         directives: {
             // 除了默认设置的核心指令( v-model 和 v-show ),Vue 也允许注册自定义指令。
@@ -363,6 +393,11 @@
                 }
             }
         },
+        watch:{
+            subCommentList:function(val){
+                console.log(val);
+            }
+        }
     }
 </script>
 <style>
