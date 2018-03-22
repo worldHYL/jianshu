@@ -4,7 +4,7 @@
         <div class="person my-container">
             <div class="row">
                 <div class="col-8 main">
-                    <other-infor></other-infor>
+                    <person-infor></person-infor>
                     <div id="outer-container">
                         <ul class="trigger-menu">
                             <li v-for="(trigger,index) in triggers" ref="triggers" :key="index" @click="dhClick(index)">
@@ -22,10 +22,10 @@
                                     <div class="content">
                                         <div class="author">
                                             <nuxt-link to="/u/123" class="avatar">
-                                                <img src="../../assets/img/default-avatar.jpg" alt="">
+                                                <img src="../../../assets/img/default-avatar.jpg" alt="">
                                             </nuxt-link>
                                             <div class="info">
-                                                <nuxt-link to="/u/123" class="nickname">测试用户</nuxt-link>
+                                                <nuxt-link to="/u/123" class="nickname">明日</nuxt-link>
                                                 <em> • </em>
                                                 <span>喜欢了文章 • 02.05 12:14</span>
                                             </div>
@@ -54,7 +54,6 @@
                                             </div>
                                         </blockquote>
                                     </div>
-
                                 </li>
                             </ul>
                             <!--文章列表模块-->
@@ -63,11 +62,11 @@
                                     <div class="content">
                                         <div class="author">
                                             <nuxt-link to="/u/123" class="avatar">
-                                                <img src="../../assets/img/default-avatar.jpg" alt="">
+                                                <img src="../../../assets/img/default-avatar.jpg" alt="">
                                             </nuxt-link>
                                             <div class="info">
                                                 <nuxt-link to="/u/123" class="nickname">
-                                                    测试用户
+                                                    明日_何其多
                                                 </nuxt-link>
                                                 <span class="time">02.05 11:48</span>
                                             </div>
@@ -99,11 +98,11 @@
                                     <div class="content">
                                         <div class="author">
                                             <nuxt-link to="/u/123" class="avatar">
-                                                <img src="../../assets/img/default-avatar.jpg" alt="">
+                                                <img src="../../../assets/img/default-avatar.jpg" alt="">
                                             </nuxt-link>
                                             <div class="info">
                                                 <nuxt-link to="/u/123" class="nickname">
-                                                    测试用户
+                                                    明日_何其多
                                                 </nuxt-link>
                                                 <span class="time">02.05 11:48</span>
                                             </div>
@@ -135,11 +134,11 @@
                                     <div class="content">
                                         <div class="author">
                                             <nuxt-link to="/u/123" class="avatar">
-                                                <img src="../../assets/img/default-avatar.jpg" alt="">
+                                                <img src="../../../assets/img/default-avatar.jpg" alt="">
                                             </nuxt-link>
                                             <div class="info">
-                                                <nuxt-link to="/u/123" class="nickname">
-                                                    测试用户
+                                                <nuxt-link to="/users/123/timeline" class="nickname">
+                                                    明日_何其多
                                                 </nuxt-link>
                                                 <span class="time">02.05 11:48</span>
                                             </div>
@@ -169,7 +168,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <otherinfor-aside></otherinfor-aside>
+                    <aside-special/>
                 </div>
             </div>
         </div>
@@ -178,9 +177,8 @@
 <script>
     import Vue from "vue";
     import MyHeader from "~/components/MyHeader";
-    import asideSpecial from "../../components/AsideSpecial"
-    import otherinforAside from "../../components/OtherinforAside"
-    import otherInfor from "../../components/OtherInfor"
+    import asideSpecial from "../../../components/AsideSpecial"
+    import personInfor from '~/components/personInfor'
     export default {
         data() {
             return {
@@ -240,29 +238,6 @@
                     this.new_comment = false;
                 }
             },
-            followBtn() {
-                if (this.$refs.followed.innerHTML == '取消关注') {
-                    this.icons = "fa-plus";
-                    this.$refs.followed.innerHTML = "关注";
-                    this.$refs.aFollow.className = 'no_follow';
-                } else if (this.$refs.followed.innerHTML == '关注') {
-                    this.icons = "fa-check";
-                    this.$refs.followed.innerHTML = "已关注";
-                    this.$refs.aFollow.className = 'is_follow';
-                }
-            },
-            followOver() {
-                if (this.$refs.followed.innerHTML == '已关注') {
-                    this.icons = 'fa-times';
-                    this.$refs.followed.innerHTML = "取消关注";
-                }
-            },
-            followOut() {
-                if (this.$refs.followed.innerHTML == '取消关注') {
-                    this.icons = 'fa-check';
-                    this.$refs.followed.innerHTML = "已关注";
-                }
-            },
             saveText() {
                 Vue.set(this.comments, 0, {text: document.querySelector('.comment').value})
                 this.a = document.querySelector('.comment').value;
@@ -279,12 +254,52 @@
         components: {
             MyHeader,
             asideSpecial,
-            otherinforAside,
-            otherInfor
+            personInfor
         }
     };
 </script>
 <style scoped>
+    .main-top {
+        margin-bottom: 20px;
+    }
+    .main-top .avatar {
+        float: left;
+        width: 80px;
+        height: 80px;
+        margin-left: -2px;
+    }
+    .main-top .title {
+        padding: 5px 0 0 100px;
+    }
+    .main-top .title .name {
+        font-size: 21px;
+        display: inline-block;
+        font-weight: 700;
+        vertical-align: middle;
+    }
+    .main-top .info {
+        margin-top: 5px;
+        padding-left: 100px;
+        font-size: 14px;
+    }
+    .main-top .info ul li {
+        display: inline-block;
+    }
+    .main-top .info ul .meta-block {
+        font-size: 12px;
+        margin: 0 7px 6px 0;
+        padding: 0 7px 0 0;
+        border-right: 1px solid #f0f0f0;
+        color: #969696;
+    }
+    .main-top .info ul p {
+        margin-bottom: -3px;
+        font-size: 15px;
+        color: #333;
+    }
+    .main-top .info ul .meta-block i {
+        margin-left: 3px;
+    }
     .person {
         overflow-x: hidden;
     }

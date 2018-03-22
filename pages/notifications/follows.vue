@@ -47,7 +47,6 @@
         }
     };
 </script>
-<style>
+<style scoped>
     @import "../../assets/css/notifications.css";
-
 </style>

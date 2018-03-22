@@ -53,10 +53,11 @@
         },
     };
 </script>
-<style>
+<style scoped>
     @import "../../assets/css/notifications.css";
     .jianxin-list>li{
         position:relative;
+        border-top:1px solid #f0f0f0;
     }
     .avatar{
         float:left;
